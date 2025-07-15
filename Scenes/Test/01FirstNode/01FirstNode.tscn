@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b86j0bd78spn"]
+
+[ext_resource type="Script" uid="uid://bo6ix2nd28626" path="res://Scenes/Test/01FirstNode/FirstNode01.cs" id="1_jg5rw"]
+[ext_resource type="PackedScene" uid="uid://dje3t6pcdjaoh" path="res://Scenes/Control/Logger/logger.tscn" id="2_nkm6y"]
+
+[node name="01FirstNode" type="Node"]
+script = ExtResource("1_jg5rw")
+
+[node name="Logger" parent="." instance=ExtResource("2_nkm6y")]

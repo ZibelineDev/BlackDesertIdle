@@ -6,7 +6,7 @@ public partial class Item : Resource
         public string key = "item_debug";
 
         public string name = "Item Debug";
-        public string texturePath = "uid://c656cfpwfjb8o";
+        public string texturePath = "uid://djkr3xlnqf7x8";
 
         public static Item GetWheat()
         {

@@ -3,6 +3,8 @@ using System;
 
 public partial class MapNodeUi : PanelContainer
 {
+        public static MapNodeUi DebugInstance { get; private set; }
+
         private MapNode mapNode;
 
         private TabContainer productionSitesTabContainer;
@@ -11,6 +13,8 @@ public partial class MapNodeUi : PanelContainer
 
         public override void _Ready()
         {
+                DebugInstance = this;
+
                 productionSitesTabContainer = GetNode<TabContainer>("%ProductionSitesTabContainer");
                 productionSiteContainerUi = GetNode<ProductionSiteContainerUi>("%ProductionSiteContainerUi");
 
@@ -19,11 +23,24 @@ public partial class MapNodeUi : PanelContainer
 
         public void SetMapNode(MapNode mapNode)
         {
+                if (mapNode == this.mapNode)
+                {
+                        return;
+                }
+
                 this.mapNode = mapNode;
 
                 GetNode<Label>("%NameLabel").Text = mapNode.name;
 
+                CleanProductionSites();
                 InitialiseProductionSites();
+        }
+
+        public static void SetMapNode(MapNode.Enum mapNodeEnum)
+        {
+                MapNode mapNode = MapNode.Load(mapNodeEnum);
+
+                DebugInstance.SetMapNode(mapNode);
         }
 
         private void InitialiseProductionSites()
@@ -46,5 +63,10 @@ public partial class MapNodeUi : PanelContainer
                 {
                         productionSiteContainerUi.AddProductionSite(productionSiteEnum);
                 }
+        }
+
+        private void CleanProductionSites()
+        {
+                productionSiteContainerUi.CleanProductionSites();
         }
 }

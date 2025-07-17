@@ -33,6 +33,12 @@ public partial class ProductionSiteUi : PanelContainer
                 SetProductionSite(productionSiteToLoad);
         }
 
+        public override void _ExitTree()
+        {
+                ProductionSitesHandler.Instance.productionSiteStatesUpdated -= OnProductionSiteStatesUpdated;
+
+        }
+
         private void UpdateLabels()
         {
                 workloadLabel.Text = $"Workload progress : {productionSiteState.workloadProgress} / {productionSiteState.productionSite.workload}";

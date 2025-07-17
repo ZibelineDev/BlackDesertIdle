@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 public partial class ProductionSiteContainerUi : TabContainer
 {
@@ -14,6 +15,22 @@ public partial class ProductionSiteContainerUi : TabContainer
                 productionSiteUi.nextScrollRequested += OnNextRequested;
 
                 AddChild(productionSiteUi);
+        }
+
+        public void CleanProductionSites()
+        {
+                Array<Node> children = GetChildren();
+
+                foreach (Node node in children)
+                {
+                        if (node is ProductionSiteUi productionSiteUi)
+                        {
+                                productionSiteUi.previousScrollRequested -= OnPreviousRequested;
+                                productionSiteUi.nextScrollRequested -= OnNextRequested;
+
+                                productionSiteUi.QueueFree();
+                        }
+                }
         }
 
         private void OnPreviousRequested()

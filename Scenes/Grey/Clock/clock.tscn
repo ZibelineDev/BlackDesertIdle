@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1uq8p6eed72p"]
+
+[ext_resource type="Script" uid="uid://ceso7d0t8a64d" path="res://Scenes/Grey/Clock/Clock.cs" id="1_8tu2x"]
+
+[node name="Clock" type="Node"]
+script = ExtResource("1_8tu2x")

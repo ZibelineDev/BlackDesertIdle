@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxx5dn51ofhkr"]
+
+[ext_resource type="StyleBox" uid="uid://funu0aep4jav" path="res://Assets/Styles/panel_container.tres" id="1_p0k3y"]
+[ext_resource type="Script" uid="uid://cxufdx6j37asn" path="res://Scenes/Control/ProductionSiteUi/ProductionSiteUi.cs" id="2_vntio"]
+
+[node name="ProductionSiteUi" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_p0k3y")
+script = ExtResource("2_vntio")
+productionSiteToLoad = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PreviousButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(39, 39)
+layout_mode = 2
+text = "<"
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLarge"
+text = "Production Site"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(39, 39)
+layout_mode = 2
+text = ">"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="WorkloadLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Workload required : <value>"

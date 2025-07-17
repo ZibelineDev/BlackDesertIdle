@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://da4yp2fqdbxd0"]
+
+[ext_resource type="StyleBox" uid="uid://funu0aep4jav" path="res://Assets/Styles/panel_container.tres" id="1_bp21r"]
+[ext_resource type="Script" uid="uid://3b6ryfics44k" path="res://Scenes/Control/ProductionSiteContainerUi/ProductionSiteContainerUi.cs" id="2_lvxp2"]
+[ext_resource type="PackedScene" uid="uid://cxx5dn51ofhkr" path="res://Scenes/Control/ProductionSiteUi/ProductionSiteUi.tscn" id="2_obuma"]
+
+[node name="ProductionSiteContainerUi" type="TabContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_bp21r")
+current_tab = 1
+tabs_visible = false
+script = ExtResource("2_lvxp2")
+
+[node name="WheatFarm" parent="." instance=ExtResource("2_obuma")]
+visible = false
+layout_mode = 2
+productionSiteToLoad = 0
+metadata/_tab_index = 0
+
+[node name="PotatoFarm" parent="." instance=ExtResource("2_obuma")]
+layout_mode = 2
+metadata/_tab_index = 1

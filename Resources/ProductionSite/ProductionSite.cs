@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 [GlobalClass]
 public partial class ProductionSite : Resource
@@ -10,6 +11,25 @@ public partial class ProductionSite : Resource
 
         public int workload = 10;
         public List<ItemLoot> output = new List<ItemLoot>() { new ItemLoot() };
+
+        public enum Enum
+        {
+                WheatFarm,
+                PotatoFarm,
+        }
+
+        public static ProductionSite Load(Enum enumKey)
+        {
+                switch (enumKey)
+                {
+                        case Enum.WheatFarm:
+                                return GetWheatFarm();
+                        case Enum.PotatoFarm:
+                                return GetPotatoFarm();
+                        default:
+                                return new ProductionSite();
+                }
+        }
 
         public static ProductionSite GetWheatFarm()
         {
@@ -35,5 +55,31 @@ public partial class ProductionSite : Resource
                 wheatFarm.output = new List<ItemLoot> { wheatLoot, critWheatLoot };
 
                 return wheatFarm;
+        }
+        
+        public static ProductionSite GetPotatoFarm()
+        {
+                ProductionSite productionSite = new ProductionSite();
+
+                productionSite.key = "production_site_potato_farm";
+
+                productionSite.name = "Potato Farm";
+
+                productionSite.workload = 60;
+
+                ItemLoot potatoLoot = new ItemLoot();
+                potatoLoot.item = Item.GetPotato();
+                potatoLoot.minQuantity = 2;
+                potatoLoot.maxQuantity = 5;
+
+                ItemLoot critPotatoLoot = new ItemLoot();
+                critPotatoLoot.item = Item.GetPotato();
+                critPotatoLoot.rate = 0.1f;
+                critPotatoLoot.minQuantity = 10;
+                critPotatoLoot .maxQuantity = 15;
+
+                productionSite.output = new List<ItemLoot> { potatoLoot, critPotatoLoot };
+
+                return productionSite;
         }
 }

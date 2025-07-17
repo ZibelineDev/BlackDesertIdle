@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://citg6ey5nf3j4"]
+
+[ext_resource type="Script" uid="uid://jdqahtfkjdsp" path="res://Scenes/Test/02SecondNode/SecondNode02.cs" id="1_qemo6"]
+[ext_resource type="PackedScene" uid="uid://da4yp2fqdbxd0" path="res://Scenes/Control/ProductionSiteContainerUi/production_site_container_ui.tscn" id="2_acy2x"]
+
+[node name="02SecondNode" type="Node"]
+script = ExtResource("1_qemo6")
+
+[node name="ProductionSiteContainerUi" parent="." instance=ExtResource("2_acy2x")]

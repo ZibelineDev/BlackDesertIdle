@@ -19,4 +19,16 @@ public partial class Item : Resource
 
                 return wheat;
         }
+
+        public static Item GetPotato()
+        {
+                Item item = new Item();
+
+                item.key = "item_potato";
+
+                item.name = "Potato";
+                item.texturePath = "uid://djkr3xlnqf7x8";
+
+                return item;
+        }
 }

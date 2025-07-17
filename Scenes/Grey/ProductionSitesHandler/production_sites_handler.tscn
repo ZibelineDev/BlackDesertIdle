@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c27muvu08y6lg"]
+
+[ext_resource type="Script" uid="uid://6747d6w886jy" path="res://Scenes/Grey/ProductionSitesHandler/ProductionSitesHandler.cs" id="1_n36gq"]
+
+[node name="ProductionSitesHandler" type="Node"]
+script = ExtResource("1_n36gq")

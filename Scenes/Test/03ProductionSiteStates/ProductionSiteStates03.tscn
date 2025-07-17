@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvi640q6x3fnm"]
+[gd_scene load_steps=6 format=3 uid="uid://cvi640q6x3fnm"]
 
 [ext_resource type="Script" uid="uid://c2dr4ps886en8" path="res://Scenes/Test/03ProductionSiteStates/ProductionSiteStates03.cs" id="1_4v5uw"]
 [ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/clock.tscn" id="2_0rtqy"]
 [ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/production_sites_handler.tscn" id="3_rbyam"]
 [ext_resource type="PackedScene" uid="uid://dje3t6pcdjaoh" path="res://Scenes/Control/Logger/logger.tscn" id="4_h33ro"]
+[ext_resource type="PackedScene" uid="uid://da4yp2fqdbxd0" path="res://Scenes/Control/ProductionSiteContainerUi/production_site_container_ui.tscn" id="5_0rtqy"]
 
 [node name="ProductionSiteStates03" type="Node"]
 script = ExtResource("1_4v5uw")
@@ -17,3 +18,5 @@ anchors_preset = 9
 anchor_right = 0.0
 offset_right = 32.0
 grow_horizontal = 1
+
+[node name="ProductionSiteContainerUi" parent="." instance=ExtResource("5_0rtqy")]

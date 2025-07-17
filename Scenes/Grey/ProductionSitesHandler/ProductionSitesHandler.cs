@@ -1,9 +1,12 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 public partial class ProductionSitesHandler : Node
 {
         public static ProductionSitesHandler Instance { get; private set; }
+
+        public event Action productionSiteStatesUpdated;
 
         private Dictionary<ProductionSite.Enum, ProductionSiteState> productionSiteStates = new Dictionary<ProductionSite.Enum, ProductionSiteState>();
 
@@ -35,11 +38,18 @@ public partial class ProductionSitesHandler : Node
                 return productionSiteState;
         }
 
+        public ProductionSiteState GetProductionSiteState(ProductionSite.Enum productionSiteEnum)
+        {
+                return productionSiteStates[productionSiteEnum];
+        }
+
         private void OnClockTick()
         {
                 foreach (ProductionSiteState productionSiteState in productionSiteStates.Values)
                 {
                         productionSiteState.ProgressWork();
                 }
+
+                productionSiteStatesUpdated?.Invoke();
         }
 }

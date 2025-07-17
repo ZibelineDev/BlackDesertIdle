@@ -2,12 +2,23 @@ using Godot;
 
 public partial class ProductionSiteState : Resource
 {
-        [Export] public ProductionSite productionSite = new ProductionSite();
+        public ProductionSite productionSite;
+        [Export] public ProductionSite.Enum productionSiteEnum;
         
         [Export] public bool isActive = false;
         [Export] public int workloadProgress = 0;
 
         [Export] public Worker assignedWorker = null;
+
+        public static ProductionSiteState Initialise(ProductionSite.Enum productionSiteEnum)
+        {
+                ProductionSiteState productionSiteState = new ProductionSiteState();
+
+                productionSiteState.productionSite = ProductionSite.Load(productionSiteEnum);
+                productionSiteState.productionSiteEnum = productionSiteEnum;
+
+                return productionSiteState;
+        }
 
         public void ProgressWork()
         {

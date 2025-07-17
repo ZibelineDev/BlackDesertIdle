@@ -3,7 +3,7 @@ using System;
 
 public partial class ProductionSiteUi : PanelContainer
 {
-        [Export] private ProductionSite.Enum productionSiteToLoad;
+        [Export] public ProductionSite.Enum productionSiteToLoad;
 
         private Label workloadLabel;
 

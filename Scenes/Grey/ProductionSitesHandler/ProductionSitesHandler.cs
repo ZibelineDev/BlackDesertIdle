@@ -25,17 +25,8 @@ public partial class ProductionSitesHandler : Node
         }
         private void LoadProductionSites()
         {
-                productionSiteStates[ProductionSite.Enum.WheatFarm] = InitialiseProductionSite(ProductionSite.Enum.WheatFarm);
-                productionSiteStates[ProductionSite.Enum.PotatoFarm] = InitialiseProductionSite(ProductionSite.Enum.PotatoFarm);
-        }
-
-        private ProductionSiteState InitialiseProductionSite(ProductionSite.Enum productionSiteEnum)
-        {
-                ProductionSiteState productionSiteState = new ProductionSiteState();
-
-                productionSiteState.productionSite = ProductionSite.Load(productionSiteEnum);
-
-                return productionSiteState;
+                productionSiteStates[ProductionSite.Enum.WheatFarm] = ProductionSiteState.Initialise(ProductionSite.Enum.WheatFarm);
+                productionSiteStates[ProductionSite.Enum.PotatoFarm] = ProductionSiteState.Initialise(ProductionSite.Enum.PotatoFarm);
         }
 
         public ProductionSiteState GetProductionSiteState(ProductionSite.Enum productionSiteEnum)

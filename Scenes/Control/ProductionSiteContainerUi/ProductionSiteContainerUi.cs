@@ -1,25 +1,19 @@
 using Godot;
-using Godot.Collections;
 
 public partial class ProductionSiteContainerUi : TabContainer
 {
-        public override void _Ready()
-        {
-                ConnectSignals();
-        }
+        private static string productionUiScenePath = "uid://cxx5dn51ofhkr";
 
-        private void ConnectSignals()
+        public void AddProductionSite(ProductionSite.Enum productionSiteEnum)
         {
-                Array<Node> children = GetChildren();
+                ProductionSiteUi productionSiteUi = ResourceLoader.Load<PackedScene>(productionUiScenePath).Instantiate<ProductionSiteUi>();
 
-                foreach (Node node in children)
-                {
-                        if (node is ProductionSiteUi productionSite)
-                        {
-                                productionSite.previousScrollRequested += OnPreviousRequested;
-                                productionSite.nextScrollRequested += OnNextRequested;
-                        }
-                }
+                productionSiteUi.productionSiteToLoad = productionSiteEnum;
+
+                productionSiteUi.previousScrollRequested += OnPreviousRequested;
+                productionSiteUi.nextScrollRequested += OnNextRequested;
+
+                AddChild(productionSiteUi);
         }
 
         private void OnPreviousRequested()

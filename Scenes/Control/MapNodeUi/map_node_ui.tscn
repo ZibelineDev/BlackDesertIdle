@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnui0aqiw7dco"]
+
+[ext_resource type="StyleBox" uid="uid://funu0aep4jav" path="res://Assets/Styles/panel_container.tres" id="1_cwdhp"]
+[ext_resource type="Script" uid="uid://y8tqtelywjv4" path="res://Scenes/Control/MapNodeUi/MapNodeUi.cs" id="2_me1xq"]
+[ext_resource type="PackedScene" uid="uid://da4yp2fqdbxd0" path="res://Scenes/Control/ProductionSiteContainerUi/production_site_container_ui.tscn" id="3_ebjuo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_me1xq"]
+
+[node name="MapNodeUi" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -298.0
+offset_top = -102.5
+offset_right = 298.0
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_cwdhp")
+script = ExtResource("2_me1xq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "<Node Name>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ProductionSitesTabContainer" type="TabContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_me1xq")
+current_tab = 1
+tabs_visible = false
+
+[node name="ProductionSiteContainerUi" parent="VBoxContainer/ProductionSitesTabContainer" instance=ExtResource("3_ebjuo")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/ProductionSitesTabContainer"]
+layout_mode = 2
+text = "No Production Site"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 1

@@ -44,13 +44,11 @@ public partial class CameraPole : Node3D
         {
                 if (@event.IsActionPressed("ZoomIn"))
                 {
-                        Logger.Log("→→ Input is ZoomIn");
                         ChangeCameraPosition((byte)(cameraPositionIndex - 1));
                 }
 
                 if (@event.IsActionPressed("ZoomOut"))
                 {
-                        Logger.Log("→→ Input is ZoomOut");
                         ChangeCameraPosition((byte)(cameraPositionIndex + 1));
                 }
         }
@@ -63,13 +61,11 @@ public partial class CameraPole : Node3D
                         {
                                 if (inputEventMouseButton.Pressed)
                                 {
-                                        Logger.Log("Grabbing Camera");
                                         cameraIsDragged = true;
                                 }
 
                                 if (inputEventMouseButton.IsReleased())
                                 {
-                                        Logger.Log("Releasing Camera");
                                         cameraIsDragged = false;
                                 }
 
@@ -128,13 +124,8 @@ public partial class CameraPole : Node3D
 
         private void ChangeCameraPosition(byte cameraPositionIndex)
         {
-                Logger.Log($"this.cameraPositionIndex : {this.cameraPositionIndex}");
-                Logger.Log($"cameraPositionIndex : {cameraPositionIndex}");
-                Logger.Log($"cameraPositions.Length : {cameraPositions.Length}");
-
                 if (cameraPositionIndex < 0 || cameraPositionIndex >= cameraPositions.Length || cameraPositionIndex == this.cameraPositionIndex)
                 {
-                        Logger.Log("Invalid camera Index");
                         return;
                 }
 
@@ -147,6 +138,5 @@ public partial class CameraPole : Node3D
                                 camera.Rotation.Y,
                                 camera.Rotation.Z
                         );
-                Logger.Log("Camera moved");
         }
 }

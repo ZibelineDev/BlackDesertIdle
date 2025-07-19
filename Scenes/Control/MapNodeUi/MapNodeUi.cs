@@ -18,7 +18,15 @@ public partial class MapNodeUi : PanelContainer
                 productionSitesTabContainer = GetNode<TabContainer>("%ProductionSitesTabContainer");
                 productionSiteContainerUi = GetNode<ProductionSiteContainerUi>("%ProductionSiteContainerUi");
 
-                SetMapNode(MapNode.Load(MapNode.Enum.BartaliFarm));
+                Visible = false;
+        }
+
+        public override void _Input(InputEvent @event)
+        {
+                if (@event.IsActionPressed("CloseNode"))
+                {
+                        Visible = false;
+                }
         }
 
         public void SetMapNode(MapNode mapNode)
@@ -34,6 +42,8 @@ public partial class MapNodeUi : PanelContainer
 
                 CleanProductionSites();
                 InitialiseProductionSites();
+
+                Visible = true;
         }
 
         public static void SetMapNode(MapNode.Enum mapNodeEnum)

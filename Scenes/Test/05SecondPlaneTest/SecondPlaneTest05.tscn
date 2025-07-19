@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdvirv3scpdn0"]
+
+[ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/clock.tscn" id="1_7jfuo"]
+[ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/production_sites_handler.tscn" id="2_x61ne"]
+[ext_resource type="PackedScene" uid="uid://dje3t6pcdjaoh" path="res://Scenes/Control/Logger/logger.tscn" id="3_wuqds"]
+[ext_resource type="PackedScene" uid="uid://dnui0aqiw7dco" path="res://Scenes/Control/MapNodeUi/map_node_ui.tscn" id="4_3li1b"]
+[ext_resource type="PackedScene" uid="uid://c2e5g2ogqyym5" path="res://Scenes/3D/SecondPlane/SecondPlane.tscn" id="5_8ygqj"]
+
+[node name="SecondPlaneTest05" type="Node"]
+
+[node name="Clock" parent="." instance=ExtResource("1_7jfuo")]
+
+[node name="ProductionSitesHandler" parent="." instance=ExtResource("2_x61ne")]
+
+[node name="Logger" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Logger" parent="Logger" instance=ExtResource("3_wuqds")]
+modulate = Color(1, 1, 1, 0.501961)
+anchors_preset = 9
+anchor_right = 0.0
+offset_right = 32.0
+grow_horizontal = 1
+
+[node name="Ui" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="MapNodeUi" parent="Ui" instance=ExtResource("4_3li1b")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -596.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 205.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="World3D" type="CanvasLayer" parent="."]
+
+[node name="SecondPlane" parent="World3D" instance=ExtResource("5_8ygqj")]

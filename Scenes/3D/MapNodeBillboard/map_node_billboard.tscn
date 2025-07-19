@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8ai7vdsqxt1c"]
+
+[ext_resource type="Texture2D" uid="uid://djkr3xlnqf7x8" path="res://Assets/Texture2D/icon.png" id="1_8t5mw"]
+[ext_resource type="Script" uid="uid://vdm2it03if46" path="res://Scenes/3D/MapNodeBillboard/MapNodeBillboard.cs" id="1_ppv1c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ppv1c"]
+radius = 0.961635
+
+[node name="MapNodeBillboard" type="Area3D"]
+script = ExtResource("1_ppv1c")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_8t5mw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ppv1c")

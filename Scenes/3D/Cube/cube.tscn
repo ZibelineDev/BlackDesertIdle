@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmxumae1fa4e7"]
+
+[ext_resource type="PackedScene" uid="uid://csodyg22s87ig" path="res://Assets/3D/cube.glb" id="1_je26m"]
+[ext_resource type="PackedScene" uid="uid://c8ai7vdsqxt1c" path="res://Scenes/3D/MapNodeBillboard/map_node_billboard.tscn" id="2_w22gv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w22gv"]
+albedo_color = Color(0.837788, 0.354372, 0.371259, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1teko"]
+points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1)
+
+[node name="Cube" type="StaticBody3D"]
+
+[node name="Asset" parent="." instance=ExtResource("1_je26m")]
+
+[node name="Cube" parent="Asset" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_w22gv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConvexPolygonShape3D_1teko")
+
+[node name="MapNodeBillboard" parent="." instance=ExtResource("2_w22gv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40879, 0)
+
+[editable path="Asset"]

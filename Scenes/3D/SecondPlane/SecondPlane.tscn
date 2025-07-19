@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2e5g2ogqyym5"]
+
+[ext_resource type="PackedScene" uid="uid://baepesvxufpav" path="res://Assets/3D/SecondPlane.glb" id="1_ketfj"]
+[ext_resource type="PackedScene" uid="uid://xbl14imspckg" path="res://Scenes/3D/CameraPole/camera_pole.tscn" id="2_58hij"]
+[ext_resource type="PackedScene" uid="uid://c8ai7vdsqxt1c" path="res://Scenes/3D/MapNodeBillboard/map_node_billboard.tscn" id="3_p6rr7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_58hij"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_00eap"]
+sky_material = SubResource("ProceduralSkyMaterial_58hij")
+
+[sub_resource type="Environment" id="Environment_p6rr7"]
+background_mode = 2
+sky = SubResource("Sky_00eap")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvf46"]
+albedo_color = Color(0.082105, 0.23545, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp5bn"]
+albedo_color = Color(0.584758, 0, 0.161226, 1)
+
+[node name="SecondPlane" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p6rr7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="SecondPlane" parent="." instance=ExtResource("1_ketfj")]
+
+[node name="Plane" parent="SecondPlane" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rvf46")
+
+[node name="Cube" parent="SecondPlane/Collection" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_001" parent="SecondPlane/Collection" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube2" parent="SecondPlane/Collection_001" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_0012" parent="SecondPlane/Collection_001" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube3" parent="SecondPlane/Collection_002" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_0013" parent="SecondPlane/Collection_002" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube4" parent="SecondPlane/Collection_003" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_0014" parent="SecondPlane/Collection_003" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube5" parent="SecondPlane/Collection_004" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_0015" parent="SecondPlane/Collection_004" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube6" parent="SecondPlane/Collection_005" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_0016" parent="SecondPlane/Collection_005" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube7" parent="SecondPlane/Collection_006" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_0017" parent="SecondPlane/Collection_006" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube8" parent="SecondPlane/Collection_007" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_0018" parent="SecondPlane/Collection_007" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube9" parent="SecondPlane/Collection_008" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_0019" parent="SecondPlane/Collection_008" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube10" parent="SecondPlane/Collection_009" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="Cube_00110" parent="SecondPlane/Collection_009" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rp5bn")
+
+[node name="MapNodes3D" type="Node3D" parent="."]
+
+[node name="MapNodeBillboard" parent="MapNodes3D" instance=ExtResource("3_p6rr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.34469, -9.39102)
+mapNodeEnum = 1
+
+[node name="MapNodeBillboard2" parent="MapNodes3D" instance=ExtResource("3_p6rr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0977, 4.34469, -5.21392)
+
+[node name="CameraPole" parent="." instance=ExtResource("2_58hij")]
+
+[editable path="SecondPlane"]

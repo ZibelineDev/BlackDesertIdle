@@ -8,6 +8,22 @@ public partial class Item : Resource
         public string name = "Item Debug";
         public string texturePath = "uid://djkr3xlnqf7x8";
 
+        public enum Enum
+        {
+                Wheat,
+                Potato,
+        }
+
+        public static Item Load(Enum itemEnum)
+        {
+                switch (itemEnum)
+                {
+                        case Enum.Wheat: return GetWheat();
+                        case Enum.Potato: return GetPotato();
+                        default: return new Item();
+                }
+        }
+
         public static Item GetWheat()
         {
                 Item wheat = new Item();
@@ -27,7 +43,7 @@ public partial class Item : Resource
                 item.key = "item_potato";
 
                 item.name = "Potato";
-                item.texturePath = "uid://djkr3xlnqf7x8";
+                item.texturePath = "uid://o807gky1pqkp";
 
                 return item;
         }

@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdvirv3scpdn0"]
+[gd_scene load_steps=8 format=3 uid="uid://cdvirv3scpdn0"]
 
 [ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/clock.tscn" id="1_7jfuo"]
+[ext_resource type="PackedScene" uid="uid://bem2fsxbbs1g2" path="res://Scenes/Grey/InventoryHandler/InventoryHandler.tscn" id="2_wuqds"]
 [ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/production_sites_handler.tscn" id="2_x61ne"]
 [ext_resource type="PackedScene" uid="uid://dje3t6pcdjaoh" path="res://Scenes/Control/Logger/logger.tscn" id="3_wuqds"]
 [ext_resource type="PackedScene" uid="uid://dnui0aqiw7dco" path="res://Scenes/Control/MapNodeUi/map_node_ui.tscn" id="4_3li1b"]
 [ext_resource type="PackedScene" uid="uid://c2e5g2ogqyym5" path="res://Scenes/3D/SecondPlane/SecondPlane.tscn" id="5_8ygqj"]
+[ext_resource type="PackedScene" uid="uid://8mgq4pilhksc" path="res://Scenes/Control/InventoryUi/InventoryUi.tscn" id="6_3li1b"]
 
 [node name="SecondPlaneTest05" type="Node"]
 
 [node name="Clock" parent="." instance=ExtResource("1_7jfuo")]
+
+[node name="InventoryHandler" parent="." instance=ExtResource("2_wuqds")]
 
 [node name="ProductionSitesHandler" parent="." instance=ExtResource("2_x61ne")]
 
@@ -37,6 +41,17 @@ offset_right = 0.0
 offset_bottom = 205.0
 grow_horizontal = 0
 grow_vertical = 1
+
+[node name="InventoryUi" parent="Ui" instance=ExtResource("6_3li1b")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -558.0
+offset_top = -83.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="World3D" type="CanvasLayer" parent="."]
 

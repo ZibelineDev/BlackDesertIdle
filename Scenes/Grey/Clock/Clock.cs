@@ -8,7 +8,7 @@ public partial class Clock : Node
         public event Action clockTick;
 
         private double clockProgress = 0.0;
-        private const double cycleDuration = 5.0;
+        private const double cycleDuration = 1.0;
 
         public override void _Ready()
         {

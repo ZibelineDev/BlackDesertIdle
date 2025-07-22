@@ -42,12 +42,12 @@ public partial class ProductionSite : Resource
                 wheatFarm.workload = 30;
 
                 ItemLoot wheatLoot = new ItemLoot();
-                wheatLoot.item = Item.GetWheat();
+                wheatLoot.item = Item.Load(Item.Enum.Wheat);
                 wheatLoot.minQuantity = 2;
                 wheatLoot.maxQuantity = 5;
 
                 ItemLoot critWheatLoot = new ItemLoot();
-                critWheatLoot.item = Item.GetWheat();
+                critWheatLoot.item = Item.Load(Item.Enum.Wheat);
                 critWheatLoot.rate = 0.1f;
                 critWheatLoot.minQuantity = 10;
                 critWheatLoot.maxQuantity = 15;
@@ -68,12 +68,12 @@ public partial class ProductionSite : Resource
                 productionSite.workload = 60;
 
                 ItemLoot potatoLoot = new ItemLoot();
-                potatoLoot.item = Item.GetPotato();
+                potatoLoot.item = Item.Load(Item.Enum.Potato);
                 potatoLoot.minQuantity = 2;
                 potatoLoot.maxQuantity = 5;
 
                 ItemLoot critPotatoLoot = new ItemLoot();
-                critPotatoLoot.item = Item.GetPotato();
+                critPotatoLoot.item = Item.Load(Item.Enum.Potato);
                 critPotatoLoot.rate = 0.1f;
                 critPotatoLoot.minQuantity = 10;
                 critPotatoLoot .maxQuantity = 15;

@@ -22,7 +22,7 @@ public partial class ProductionSiteState : Resource
 
         public void ProgressWork()
         {
-                workloadProgress += 10;
+                workloadProgress += 25;
 
                 if (workloadProgress >= productionSite.workload)
                 {
@@ -43,6 +43,7 @@ public partial class ProductionSiteState : Resource
                         }
 
                         Logger.Log($"Produced : {itemLoot.item.name} x{quantity}");
+                        InventoryHandler.AddItem(itemLoot.item, quantity);
                 }
         }
 }

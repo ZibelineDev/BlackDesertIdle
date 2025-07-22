@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://c173ll7mxamai"]
+
+[ext_resource type="StyleBox" uid="uid://funu0aep4jav" path="res://Assets/Styles/panel_container.tres" id="1_gxt7u"]
+[ext_resource type="Script" uid="uid://deyjbx4p3ds1j" path="res://Scenes/Control/InventoryItemUi/InventoryItemUi.cs" id="2_fikjp"]
+[ext_resource type="Texture2D" uid="uid://djkr3xlnqf7x8" path="res://Assets/Texture2D/icon.png" id="3_07ixw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3sac"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="InventoryItemUi" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("1_gxt7u")
+script = ExtResource("2_fikjp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_07ixw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="QuantityPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 10)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3sac")
+
+[node name="QuantityLabel" type="Label" parent="QuantityPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

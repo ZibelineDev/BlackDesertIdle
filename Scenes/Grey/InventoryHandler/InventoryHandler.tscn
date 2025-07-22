@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bem2fsxbbs1g2"]
+
+[ext_resource type="Script" uid="uid://2pm1f2kjpnsu" path="res://Scenes/Grey/InventoryHandler/InventoryHandler.cs" id="1_tajdy"]
+
+[node name="InventoryHandler" type="Node"]
+script = ExtResource("1_tajdy")

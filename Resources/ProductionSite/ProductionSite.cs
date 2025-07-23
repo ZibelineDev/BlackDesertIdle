@@ -31,6 +31,18 @@ public partial class ProductionSite : Resource
                 }
         }
 
+        public static Enum GetEnum(string key)
+        {
+                switch (key)
+                {
+                        case "production_site_wheat_farm": return Enum.WheatFarm;
+                        case "production_site_potato_farm": return Enum.PotatoFarm;
+                        default:
+                                GD.PrintErr("Trying to get an Production Site Enum with invalid key.");
+                                return Enum.WheatFarm;
+                }
+        }
+
         public static ProductionSite GetWheatFarm()
         {
                 ProductionSite wheatFarm = new ProductionSite();

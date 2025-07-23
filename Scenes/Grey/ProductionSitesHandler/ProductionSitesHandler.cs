@@ -29,16 +29,28 @@ public partial class ProductionSitesHandler : Node
                 productionSiteStates[ProductionSite.Enum.PotatoFarm] = ProductionSiteState.Initialise(ProductionSite.Enum.PotatoFarm);
         }
 
-        public ProductionSiteState GetProductionSiteState(ProductionSite.Enum productionSiteEnum)
+        public static ProductionSiteState GetProductionSiteState(ProductionSite.Enum productionSiteEnum)
         {
-                return productionSiteStates[productionSiteEnum];
+                return Instance.productionSiteStates[productionSiteEnum];
+        }
+
+        public static void AssignWorker(ProductionSite.Enum productionSiteEnum, Worker worker)
+        {
+                ProductionSiteState productionSiteState = Instance.productionSiteStates[productionSiteEnum];
+
+                productionSiteState.assignedWorker = worker;
+                productionSiteState.isActive = true;
+                
         }
 
         private void OnClockTick()
         {
                 foreach (ProductionSiteState productionSiteState in productionSiteStates.Values)
                 {
-                        productionSiteState.ProgressWork();
+                        if (productionSiteState.isActive)
+                        {
+                                productionSiteState.ProgressWork();
+                        }
                 }
 
                 productionSiteStatesUpdated?.Invoke();

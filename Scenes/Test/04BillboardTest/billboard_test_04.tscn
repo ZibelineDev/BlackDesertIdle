@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck1lxiyjm6kld"]
 
-[ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/clock.tscn" id="1_lnisn"]
-[ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/production_sites_handler.tscn" id="2_oyr4f"]
+[ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/Clock.tscn" id="1_lnisn"]
+[ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/ProductionSitesHandler.tscn" id="2_oyr4f"]
 [ext_resource type="PackedScene" uid="uid://dje3t6pcdjaoh" path="res://Scenes/Control/Logger/logger.tscn" id="3_mllbt"]
 [ext_resource type="PackedScene" uid="uid://cbpyun45bdedf" path="res://Scenes/3D/Plane/Plane.tscn" id="4_215os"]
 [ext_resource type="PackedScene" uid="uid://dnui0aqiw7dco" path="res://Scenes/Control/MapNodeUi/map_node_ui.tscn" id="4_oyr4f"]

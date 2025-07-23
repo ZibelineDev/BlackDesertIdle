@@ -5,9 +5,12 @@ public partial class Worker : Resource
 {
         private static Random random = new Random();
 
-        public string name = "Worker Debug";
+        [Export] public string name = "Worker Debug";
 
-        public byte workSpeed = 10;
+        [Export] public byte workSpeed = 10;
+        [Export] public string assignedProductionSite = null;
+        //↓ Placeholder property for future content. ↓
+        [Export] public string residenceNodeKey = "node_debug";
 
         public static Worker GenerateRandomWorker()
         {

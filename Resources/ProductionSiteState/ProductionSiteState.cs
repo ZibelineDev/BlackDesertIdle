@@ -22,7 +22,14 @@ public partial class ProductionSiteState : Resource
 
         public void ProgressWork()
         {
-                workloadProgress += 25;
+                if (assignedWorker == null)
+                {
+                        GD.PrintErr("Tried to Progress Work on a Node with no Worker.");
+                        isActive = false;
+                        return;
+                }
+
+                workloadProgress += assignedWorker.workSpeed;
 
                 if (workloadProgress >= productionSite.workload)
                 {

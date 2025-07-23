@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://do33gbq8wwoqx"]
+
+[ext_resource type="StyleBox" uid="uid://funu0aep4jav" path="res://Assets/Styles/panel_container.tres" id="1_mc6wb"]
+[ext_resource type="Script" uid="uid://dahxgovp3u6aw" path="res://Scenes/Control/WorkerUi/WorkerUi.cs" id="2_mc1bx"]
+
+[node name="WorkerUi" type="PanelContainer"]
+theme_override_styles/panel = ExtResource("1_mc6wb")
+script = ExtResource("2_mc1bx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "<Worker Name>"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Occupation" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<occupation status>"
+
+[node name="WorkSpeed" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<work speed>"
+horizontal_alignment = 2

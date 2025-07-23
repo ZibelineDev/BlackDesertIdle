@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxx5dn51ofhkr"]
+[gd_scene load_steps=5 format=3 uid="uid://cxx5dn51ofhkr"]
 
 [ext_resource type="StyleBox" uid="uid://funu0aep4jav" path="res://Assets/Styles/panel_container.tres" id="1_p0k3y"]
 [ext_resource type="Script" uid="uid://cxufdx6j37asn" path="res://Scenes/Control/ProductionSiteUi/ProductionSiteUi.cs" id="2_vntio"]
+[ext_resource type="PackedScene" uid="uid://do33gbq8wwoqx" path="res://Scenes/Control/WorkerUi/WorkerUi.tscn" id="3_8bo3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gw1qe"]
 
 [node name="ProductionSiteUi" type="PanelContainer"]
 anchors_preset = 8
@@ -50,3 +53,31 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Workload required : <value>"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="WorkerTab" type="TabContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gw1qe")
+current_tab = 1
+tabs_visible = false
+
+[node name="WorkerListScroll" type="ScrollContainer" parent="VBoxContainer/WorkerTab"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="WorkerListContainer" type="VBoxContainer" parent="VBoxContainer/WorkerTab/WorkerListScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WorkerUi" parent="VBoxContainer/WorkerTab" instance=ExtResource("3_8bo3j")]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 1

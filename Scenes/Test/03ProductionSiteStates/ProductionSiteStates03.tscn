@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvi640q6x3fnm"]
 
 [ext_resource type="Script" uid="uid://c2dr4ps886en8" path="res://Scenes/Test/03ProductionSiteStates/ProductionSiteStates03.cs" id="1_4v5uw"]
-[ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/clock.tscn" id="2_0rtqy"]
-[ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/production_sites_handler.tscn" id="3_rbyam"]
+[ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/Clock.tscn" id="2_0rtqy"]
+[ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/ProductionSitesHandler.tscn" id="3_rbyam"]
 [ext_resource type="PackedScene" uid="uid://dje3t6pcdjaoh" path="res://Scenes/Control/Logger/logger.tscn" id="4_h33ro"]
 [ext_resource type="PackedScene" uid="uid://dnui0aqiw7dco" path="res://Scenes/Control/MapNodeUi/map_node_ui.tscn" id="5_0rtqy"]
 [ext_resource type="StyleBox" uid="uid://funu0aep4jav" path="res://Assets/Styles/panel_container.tres" id="6_rbyam"]

@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdvirv3scpdn0"]
+[gd_scene load_steps=10 format=3 uid="uid://cdvirv3scpdn0"]
 
-[ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/clock.tscn" id="1_7jfuo"]
+[ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/Clock.tscn" id="1_7jfuo"]
 [ext_resource type="PackedScene" uid="uid://bem2fsxbbs1g2" path="res://Scenes/Grey/InventoryHandler/InventoryHandler.tscn" id="2_wuqds"]
-[ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/production_sites_handler.tscn" id="2_x61ne"]
+[ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/ProductionSitesHandler.tscn" id="2_x61ne"]
 [ext_resource type="PackedScene" uid="uid://dje3t6pcdjaoh" path="res://Scenes/Control/Logger/logger.tscn" id="3_wuqds"]
 [ext_resource type="PackedScene" uid="uid://dnui0aqiw7dco" path="res://Scenes/Control/MapNodeUi/map_node_ui.tscn" id="4_3li1b"]
+[ext_resource type="PackedScene" uid="uid://dn03q47qqdbm2" path="res://Scenes/Grey/WorkersHandler/WorkersHandler.tscn" id="4_8ygqj"]
 [ext_resource type="PackedScene" uid="uid://c2e5g2ogqyym5" path="res://Scenes/3D/SecondPlane/SecondPlane.tscn" id="5_8ygqj"]
 [ext_resource type="PackedScene" uid="uid://8mgq4pilhksc" path="res://Scenes/Control/InventoryUi/InventoryUi.tscn" id="6_3li1b"]
+[ext_resource type="PackedScene" uid="uid://cu1nqe1wiq5um" path="res://Scenes/Control/WorkerListUi/WorkerListUi.tscn" id="8_uduu0"]
 
 [node name="SecondPlaneTest05" type="Node"]
 
@@ -16,15 +18,20 @@
 
 [node name="ProductionSitesHandler" parent="." instance=ExtResource("2_x61ne")]
 
+[node name="WorkersHandler" parent="." instance=ExtResource("4_8ygqj")]
+
 [node name="Logger" type="CanvasLayer" parent="."]
 layer = 3
 
 [node name="Logger" parent="Logger" instance=ExtResource("3_wuqds")]
 modulate = Color(1, 1, 1, 0.501961)
-anchors_preset = 9
+anchors_preset = 0
 anchor_right = 0.0
-offset_right = 32.0
+anchor_bottom = 0.0
+offset_right = 500.0
+offset_bottom = 362.0
 grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Ui" type="CanvasLayer" parent="."]
 layer = 2
@@ -51,6 +58,17 @@ anchor_bottom = 1.0
 offset_left = -558.0
 offset_top = -83.0
 grow_horizontal = 0
+grow_vertical = 0
+
+[node name="WorkerListUi" parent="Ui" instance=ExtResource("8_uduu0")]
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_top = -520.0
+offset_right = 500.0
+grow_horizontal = 1
 grow_vertical = 0
 
 [node name="World3D" type="CanvasLayer" parent="."]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cunkk56e65wbl"]
+
+[ext_resource type="PackedScene" uid="uid://dmojjnwjjmxn" path="res://Scenes/3D/MapNode3D/MapNode3D.tscn" id="1_v6qo1"]
+[ext_resource type="PackedScene" uid="uid://ll0gv61cgvst" path="res://Scenes/3D/ProductionSite3D/ProductionSite3D.tscn" id="2_gk81h"]
+
+[node name="MapNode3D" instance=ExtResource("1_v6qo1")]
+
+[node name="WheatFarm" parent="ProductionSites" index="0" instance=ExtResource("2_gk81h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0)
+
+[node name="PotatoFarm" parent="ProductionSites" index="1" instance=ExtResource("2_gk81h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0)

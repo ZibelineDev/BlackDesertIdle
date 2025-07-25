@@ -21,12 +21,9 @@ public partial class MapNodeUi : PanelContainer
                 Visible = false;
         }
 
-        public override void _Input(InputEvent @event)
+        public static void StaticHide()
         {
-                if (@event.IsActionPressed("CloseNode"))
-                {
-                        Visible = false;
-                }
+                DebugInstance.Hide();
         }
 
         public void SetMapNode(MapNode mapNode)
@@ -53,6 +50,12 @@ public partial class MapNodeUi : PanelContainer
                 DebugInstance.SetMapNode(mapNode);
         }
 
+        public static void SetProductionSite(int index)
+        {
+                DebugInstance.productionSitesTabContainer.CurrentTab = 0;
+                DebugInstance.productionSiteContainerUi.SetTab(index);
+        }
+
         private void InitialiseProductionSites()
         {
                 if (mapNode.productionSites == null)
@@ -67,7 +70,7 @@ public partial class MapNodeUi : PanelContainer
                         return;
                 }
 
-                productionSitesTabContainer.CurrentTab = 0;
+                productionSitesTabContainer.CurrentTab = 2;
 
                 foreach (ProductionSite.Enum productionSiteEnum in mapNode.productionSites)
                 {

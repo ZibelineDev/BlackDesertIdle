@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0qnuhdgkghxm"]
+
+[ext_resource type="PackedScene" uid="uid://dmojjnwjjmxn" path="res://Scenes/3D/MapNode3D/MapNode3D.tscn" id="1_txnrp"]
+
+[node name="EmptyNode" instance=ExtResource("1_txnrp")]
+mapNodeEnum = 1

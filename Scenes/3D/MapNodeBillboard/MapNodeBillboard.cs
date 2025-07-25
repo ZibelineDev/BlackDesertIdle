@@ -3,14 +3,31 @@ using System;
 
 public partial class MapNodeBillboard : Area3D
 {
-        [Export] private MapNode.Enum mapNodeEnum;
+        private Sprite3D sprite3D;
 
         private bool isHovered = false;
+        private bool isRotating = false;
+
+        public event Action nodePressed;
 
         public override void _Ready()
         {
+                sprite3D = GetNode<Sprite3D>("Sprite3D");
+
                 MouseEntered += OnMouseEntered;
                 MouseExited += OnMouseExited;
+        }
+
+        public override void _Process(double delta)
+        {
+                LookAt(CameraPole.Instance.camera.GlobalPosition, Vector3.Up);
+
+                if (!isRotating)
+                {
+                        return;
+                }
+
+                sprite3D.RotateZ((float)delta);
         }
 
         public override void _Input(InputEvent @event)
@@ -24,9 +41,14 @@ public partial class MapNodeBillboard : Area3D
                 {
                         if (inputEventMouseButton.ButtonIndex == MouseButton.Left && inputEventMouseButton.Pressed)
                         {
-                                MapNodeUi.SetMapNode(mapNodeEnum);
+                                nodePressed?.Invoke();
                         }
                 }
+        }
+
+        public void InitialiseLabel(string name)
+        {
+                GetNode<Label3D>("Label3D").Text = name;
         }
 
         private void OnMouseEntered()
@@ -37,5 +59,15 @@ public partial class MapNodeBillboard : Area3D
         private void OnMouseExited()
         {
                 isHovered = false;
+        }
+
+        public void StartRotation()
+        {
+                isRotating = true;
+        }
+
+        public void StopRotation()
+        {
+                isRotating = false;
         }
 }

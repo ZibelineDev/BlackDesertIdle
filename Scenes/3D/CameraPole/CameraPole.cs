@@ -3,18 +3,22 @@ using System;
 
 public partial class CameraPole : Node3D
 {
-        private Camera3D camera;
+        public static CameraPole Instance { get; private set; }
+
+        public Camera3D camera { get; private set; }
 
         private Vector3[] cameraPositions = 
                 [
                         new Vector3(0, 6, -10),
                         new Vector3(0, 9, -14),
                         new Vector3(0, 12, -22),
+                        new Vector3(0, 20, -35),
                 ];
         private sbyte[] cameraRotations =
                 [
                         -20,
                         -20,
+                        -30,
                         -30,
                 ];
         private byte cameraPositionIndex;
@@ -24,9 +28,11 @@ public partial class CameraPole : Node3D
 
         public override void _Ready()
         {
+                Instance = this;
+
                 camera = GetNode<Camera3D>("%Camera3D");
 
-                ChangeCameraPosition(0);
+                ChangeCameraPosition(3);
         }
 
         public override void _Input(InputEvent @event)

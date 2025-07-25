@@ -56,4 +56,15 @@ public partial class ProductionSiteContainerUi : TabContainer
 
                 CurrentTab = newTab;
         }
+
+        public void SetTab(int index)
+        {
+                if ( (index < 0) || (index >= GetTabCount()) )
+                {
+                        GD.PrintErr($"Production Site Index isn't matching TabContainer content");
+                        return;
+                }
+
+                CurrentTab = index;
+        }
 }

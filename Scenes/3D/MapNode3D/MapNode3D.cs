@@ -15,6 +15,7 @@ public partial class MapNode3D : Node
                 productionSites = GetNode<Node3D>("%ProductionSites");
 
                 mapNodeBillboard.nodePressed += OnNodePressed;
+                WorkersHandler.Instance.workerAssigned += OnWorkerAssigned;
                 ConnectProductionSitesSignals();
 
                 productionSites.Visible = false;
@@ -25,6 +26,7 @@ public partial class MapNode3D : Node
         public override void _ExitTree()
         {
                 mapNodeBillboard.nodePressed -= OnNodePressed;
+                WorkersHandler.Instance.workerAssigned -= OnWorkerAssigned;
 
                 DisconnectProductionSitesSignals();
         }
@@ -104,5 +106,13 @@ public partial class MapNode3D : Node
         private void OnProductionSitePressed(int index)
         {
                 MapNodeUi.SetProductionSite(index);
+        }
+
+        private void OnWorkerAssigned()
+        {
+                MapNode mapNode = MapNode.Load(mapNodeEnum);
+
+                if (mapNode.IsActive()) { mapNodeBillboard.StartRotation(); }
+                else { mapNodeBillboard.StopRotation(); }
         }
 }

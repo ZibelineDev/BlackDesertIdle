@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.InteropServices.Marshalling;
 
 public partial class MapNodeUi : PanelContainer
 {
@@ -18,12 +19,20 @@ public partial class MapNodeUi : PanelContainer
                 productionSitesTabContainer = GetNode<TabContainer>("%ProductionSitesTabContainer");
                 productionSiteContainerUi = GetNode<ProductionSiteContainerUi>("%ProductionSiteContainerUi");
 
+                WorkersHandler.Instance.workerAssigned += OnWorkerAssigned;
+
                 Visible = false;
+        }
+
+        public override void _ExitTree()
+        {
+                WorkersHandler.Instance.workerAssigned -= OnWorkerAssigned;
         }
 
         public static void StaticHide()
         {
                 DebugInstance.Hide();
+                DebugInstance.mapNode = null;
         }
 
         public void SetMapNode(MapNode mapNode)
@@ -81,5 +90,15 @@ public partial class MapNodeUi : PanelContainer
         private void CleanProductionSites()
         {
                 productionSiteContainerUi.CleanProductionSites();
+        }
+
+        private void OnWorkerAssigned()
+        {
+                if (mapNode.IsActive()) {  }
+        }
+
+        private void Activate()
+        {
+                
         }
 }

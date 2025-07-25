@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class MapNode : Resource
 {
-        public string key = "node_debug";
+        public Enum key = Enum.Debug;
 
         public string name = "Debug Node";
 
@@ -13,30 +13,49 @@ public partial class MapNode : Resource
         // INSERT 
         // → Buildings
 
+        public static Dictionary<Enum, MapNode> dictionary = new Dictionary<Enum, MapNode>();
+
         public enum Enum
         {
+                Debug = -1,
                 BartaliFarm,
                 EmptyNode,
         }
 
         public static MapNode Load(Enum mapNodeEnum)
         {
-                switch (mapNodeEnum)
+                if (dictionary.ContainsKey(mapNodeEnum))
                 {
-                        case Enum.BartaliFarm:
-                                return GetBartaliFarm();
-                        case Enum.EmptyNode:
-                                return GetEmptyNode();
-                        default:
-                                return new MapNode();
+                        return dictionary[mapNodeEnum];
                 }
+
+                return new MapNode();
+        }
+
+        public bool IsActive()
+        {
+                if (productionSites.Count == 0) { return false; }
+
+                foreach (ProductionSite.Enum productionSiteEnum in productionSites)
+                {
+                        ProductionSiteState productionSiteState = ProductionSitesHandler.GetProductionSiteState(productionSiteEnum);
+                        if (productionSiteState.assignedWorker != null) { return true; }
+                }
+
+                return false;
+        }
+
+        static MapNode()
+        {
+                dictionary[Enum.BartaliFarm] = GetBartaliFarm();
+                dictionary[Enum.EmptyNode] = GetEmptyNode();
         }
 
         public static MapNode GetBartaliFarm()
         {
                 MapNode bartaliFarm = new MapNode();
 
-                bartaliFarm.key = "node_bartali_farm";
+                bartaliFarm.key = Enum.BartaliFarm;
 
                 bartaliFarm.name = "Bartali Farm";
 
@@ -49,7 +68,7 @@ public partial class MapNode : Resource
         {
                 MapNode mapNode = new MapNode();
 
-                mapNode.key = "node_empty_node";
+                mapNode.key = Enum.EmptyNode;
 
                 mapNode.name = "Empty Node";
 

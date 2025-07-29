@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0mbw2e3yavf6"]
+
+[ext_resource type="Script" uid="uid://d1qxof2kr7u7n" path="res://Scenes/Grey/MapNodesHandler/MapNodesHandler.cs" id="1_mv8bo"]
+
+[node name="MapNodesHandler" type="Node"]
+script = ExtResource("1_mv8bo")

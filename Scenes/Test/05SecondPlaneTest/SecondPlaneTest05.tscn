@@ -1,20 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdvirv3scpdn0"]
+[gd_scene load_steps=12 format=3 uid="uid://cdvirv3scpdn0"]
 
 [ext_resource type="PackedScene" uid="uid://d1uq8p6eed72p" path="res://Scenes/Grey/Clock/Clock.tscn" id="1_7jfuo"]
+[ext_resource type="PackedScene" uid="uid://c5tinh1guc2m0" path="res://Scenes/Grey/Data/Data.tscn" id="1_uduu0"]
 [ext_resource type="PackedScene" uid="uid://bem2fsxbbs1g2" path="res://Scenes/Grey/InventoryHandler/InventoryHandler.tscn" id="2_wuqds"]
 [ext_resource type="PackedScene" uid="uid://c27muvu08y6lg" path="res://Scenes/Grey/ProductionSitesHandler/ProductionSitesHandler.tscn" id="2_x61ne"]
 [ext_resource type="PackedScene" uid="uid://dje3t6pcdjaoh" path="res://Scenes/Control/Logger/logger.tscn" id="3_wuqds"]
 [ext_resource type="PackedScene" uid="uid://dnui0aqiw7dco" path="res://Scenes/Control/MapNodeUi/map_node_ui.tscn" id="4_3li1b"]
 [ext_resource type="PackedScene" uid="uid://dn03q47qqdbm2" path="res://Scenes/Grey/WorkersHandler/WorkersHandler.tscn" id="4_8ygqj"]
+[ext_resource type="PackedScene" uid="uid://b0mbw2e3yavf6" path="res://Scenes/Grey/MapNodesHandler/MapNodesHandler.tscn" id="4_erkl7"]
 [ext_resource type="PackedScene" uid="uid://c2e5g2ogqyym5" path="res://Scenes/3D/SecondPlane/SecondPlane.tscn" id="5_8ygqj"]
 [ext_resource type="PackedScene" uid="uid://8mgq4pilhksc" path="res://Scenes/Control/InventoryUi/InventoryUi.tscn" id="6_3li1b"]
 [ext_resource type="PackedScene" uid="uid://cu1nqe1wiq5um" path="res://Scenes/Control/WorkerListUi/WorkerListUi.tscn" id="8_uduu0"]
 
 [node name="SecondPlaneTest05" type="Node"]
 
+[node name="Data" parent="." instance=ExtResource("1_uduu0")]
+
 [node name="Clock" parent="." instance=ExtResource("1_7jfuo")]
 
 [node name="InventoryHandler" parent="." instance=ExtResource("2_wuqds")]
+
+[node name="MapNodesHandler" parent="." instance=ExtResource("4_erkl7")]
 
 [node name="ProductionSitesHandler" parent="." instance=ExtResource("2_x61ne")]
 

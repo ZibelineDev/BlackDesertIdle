@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5tinh1guc2m0"]
+
+[ext_resource type="Script" uid="uid://cp1hondhk72wg" path="res://Scenes/Grey/Data/Data.cs" id="1_jk0by"]
+
+[node name="Data" type="Node"]
+script = ExtResource("1_jk0by")

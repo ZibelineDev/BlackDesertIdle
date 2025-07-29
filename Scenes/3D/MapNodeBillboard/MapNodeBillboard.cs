@@ -10,6 +10,9 @@ public partial class MapNodeBillboard : Area3D
 
         public event Action nodePressed;
 
+        private static Color ownedColor = new Color(0.736f, 0.514f, 0.0f);
+        private static Color notOwnedColor = new Color(1f, 1f, 1f);
+
         public override void _Ready()
         {
                 sprite3D = GetNode<Sprite3D>("Sprite3D");
@@ -69,5 +72,15 @@ public partial class MapNodeBillboard : Area3D
         public void StopRotation()
         {
                 isRotating = false;
+        }
+
+        public void SetColourToOwned()
+        {
+                sprite3D.Modulate = ownedColor;
+        }
+
+        public void SetColourToNotOwned()
+        {
+                sprite3D.Modulate = notOwnedColor;
         }
 }

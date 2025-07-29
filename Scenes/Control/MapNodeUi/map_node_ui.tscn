@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnui0aqiw7dco"]
+[gd_scene load_steps=7 format=3 uid="uid://dnui0aqiw7dco"]
 
 [ext_resource type="StyleBox" uid="uid://funu0aep4jav" path="res://Assets/Styles/panel_container.tres" id="1_cwdhp"]
 [ext_resource type="Script" uid="uid://y8tqtelywjv4" path="res://Scenes/Control/MapNodeUi/MapNodeUi.cs" id="2_me1xq"]
 [ext_resource type="PackedScene" uid="uid://da4yp2fqdbxd0" path="res://Scenes/Control/ProductionSiteContainerUi/production_site_container_ui.tscn" id="3_ebjuo"]
+[ext_resource type="Script" uid="uid://33f5yfucqrju" path="res://Scenes/Control/MapNodeUi/PurchasePanel.cs" id="4_ebjuo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_me1xq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ai4i2"]
 
 [node name="MapNodeUi" type="PanelContainer"]
 anchors_preset = 8
@@ -39,6 +42,7 @@ layout_mode = 2
 [node name="ProductionSitesTabContainer" type="TabContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_me1xq")
 current_tab = 2
 tabs_visible = false
@@ -57,6 +61,54 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_tab_index = 1
 
-[node name="Control" type="Control" parent="VBoxContainer/ProductionSitesTabContainer"]
+[node name="PurchasePanel" type="TabContainer" parent="VBoxContainer/ProductionSitesTabContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ai4i2")
+current_tab = 1
+tabs_visible = false
+script = ExtResource("4_ebjuo")
 metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ProductionSitesTabContainer/PurchasePanel"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="PurchaseLabel" type="Label" parent="VBoxContainer/ProductionSitesTabContainer/PurchasePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Cost : <value> Influence"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseButton" type="Button" parent="VBoxContainer/ProductionSitesTabContainer/PurchasePanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+text = "Invest"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/ProductionSitesTabContainer/PurchasePanel"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="SellLabel" type="Label" parent="VBoxContainer/ProductionSitesTabContainer/PurchasePanel/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Return : <value> Influence"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellButton" type="Button" parent="VBoxContainer/ProductionSitesTabContainer/PurchasePanel/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+text = "Sell"

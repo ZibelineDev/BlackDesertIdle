@@ -1,4 +1,5 @@
 using Godot;
+using MapNodeUiGroup;
 using System;
 using System.Runtime.InteropServices.Marshalling;
 
@@ -11,6 +12,7 @@ public partial class MapNodeUi : PanelContainer
         private TabContainer productionSitesTabContainer;
 
         private ProductionSiteContainerUi productionSiteContainerUi;
+        private PurchasePanel purchasePanel;
 
         public override void _Ready()
         {
@@ -18,8 +20,13 @@ public partial class MapNodeUi : PanelContainer
 
                 productionSitesTabContainer = GetNode<TabContainer>("%ProductionSitesTabContainer");
                 productionSiteContainerUi = GetNode<ProductionSiteContainerUi>("%ProductionSiteContainerUi");
+                purchasePanel = GetNode<PurchasePanel>("%PurchasePanel");
+
+                GetNode<Button>("%PurchaseButton").Pressed += OnPurchasePressed;
+                GetNode<Button>("%SellButton").Pressed += OnSellPressed;
 
                 WorkersHandler.Instance.workerAssigned += OnWorkerAssigned;
+                MapNodesHandler.mapNodeOwnStatusChanged += SetOwnStatus;
 
                 Visible = false;
         }
@@ -27,6 +34,7 @@ public partial class MapNodeUi : PanelContainer
         public override void _ExitTree()
         {
                 WorkersHandler.Instance.workerAssigned -= OnWorkerAssigned;
+                MapNodesHandler.mapNodeOwnStatusChanged -= SetOwnStatus;
         }
 
         public static void StaticHide()
@@ -42,14 +50,16 @@ public partial class MapNodeUi : PanelContainer
                         return;
                 }
 
+                Visible = true;
+
                 this.mapNode = mapNode;
 
                 GetNode<Label>("%NameLabel").Text = mapNode.name;
 
                 CleanProductionSites();
                 InitialiseProductionSites();
+                SetOwnStatus();
 
-                Visible = true;
         }
 
         public static void SetMapNode(MapNode.Enum mapNodeEnum)
@@ -92,6 +102,25 @@ public partial class MapNodeUi : PanelContainer
                 productionSiteContainerUi.CleanProductionSites();
         }
 
+        private void SetOwnStatus()
+        {
+                if (Visible == false)
+                {
+                        return;
+                }
+
+                bool isOwned = MapNodesHandler.GetOwnStatus(mapNode.key);
+
+                if (isOwned) 
+                {
+                        purchasePanel.SetToOwned(mapNode.investCost);
+                }
+                else 
+                {
+                        purchasePanel.SetToNotOwned(mapNode.investCost); 
+                }
+        }
+
         private void OnWorkerAssigned()
         {
                 if (mapNode.IsActive()) {  }
@@ -100,5 +129,15 @@ public partial class MapNodeUi : PanelContainer
         private void Activate()
         {
                 
+        }
+
+        private void OnPurchasePressed()
+        {
+                MapNodesHandler.InvestIn(mapNode.key);
+        }
+
+        private void OnSellPressed()
+        {
+                MapNodesHandler.ReturnInvestFrom(mapNode.key);
         }
 }

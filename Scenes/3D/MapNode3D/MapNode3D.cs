@@ -16,17 +16,20 @@ public partial class MapNode3D : Node
 
                 mapNodeBillboard.nodePressed += OnNodePressed;
                 WorkersHandler.Instance.workerAssigned += OnWorkerAssigned;
+                MapNodesHandler.mapNodeOwnStatusChanged += OnMapNodeOwnStatusUpdated;
                 ConnectProductionSitesSignals();
 
                 productionSites.Visible = false;
 
                 InitialiseBillboardLabel();
+                UpdateOwnStatus();
         }
 
         public override void _ExitTree()
         {
                 mapNodeBillboard.nodePressed -= OnNodePressed;
                 WorkersHandler.Instance.workerAssigned -= OnWorkerAssigned;
+                MapNodesHandler.mapNodeOwnStatusChanged -= OnMapNodeOwnStatusUpdated;
 
                 DisconnectProductionSitesSignals();
         }
@@ -103,6 +106,20 @@ public partial class MapNode3D : Node
                 }
         }
 
+        private void UpdateOwnStatus()
+        {
+                bool isOwned = MapNodesHandler.GetOwnStatus(mapNodeEnum);
+
+                if (isOwned)
+                {
+                        mapNodeBillboard.SetColourToOwned();
+                }
+                else
+                {
+                        mapNodeBillboard.SetColourToNotOwned();
+                }
+        }
+
         private void OnProductionSitePressed(int index)
         {
                 MapNodeUi.SetProductionSite(index);
@@ -114,5 +131,10 @@ public partial class MapNode3D : Node
 
                 if (mapNode.IsActive()) { mapNodeBillboard.StartRotation(); }
                 else { mapNodeBillboard.StopRotation(); }
+        }
+
+        private void OnMapNodeOwnStatusUpdated()
+        {
+                UpdateOwnStatus();
         }
 }
